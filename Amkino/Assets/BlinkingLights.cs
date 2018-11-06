@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BlinkingLights : MonoBehaviour {
 
-    public float Timer = 0;
+    float Timer;
+    public float RandomTime;
 
     void Update()
     {
+        RandomTime = Random.Range(1, 10);
         Timer += Time.deltaTime;
-        if (Timer >= 2)
+        if (Timer >= RandomTime)
         {
             
             StartCoroutine(Blink());
@@ -20,9 +22,11 @@ public class BlinkingLights : MonoBehaviour {
         IEnumerator Blink()
         {
         Light light = GetComponent<Light>();
-        light.enabled = true;
-            yield return new WaitForSeconds(0);
         light.enabled = false;
+            yield return new WaitForSeconds(0.1f);
+        light.enabled = true;
         }
+
+   
     
 }
