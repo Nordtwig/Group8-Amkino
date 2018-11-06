@@ -23,7 +23,7 @@ public class BlinkingLights : MonoBehaviour {
         {
         Light light = GetComponent<Light>();
         light.enabled = false;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
         light.enabled = true;
         }
 
