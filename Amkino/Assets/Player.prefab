@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 54682076767585964}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,13 +587,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1078698232025148}
-  m_LocalRotation: {x: -0.6035975, y: 0.23645377, z: 0.18173054, w: 0.7394144}
-  m_LocalPosition: {x: -0.028163321, y: 0.606256, z: 0.038478136}
+  m_LocalRotation: {x: -0.57625365, y: 0.3265103, z: 0.25038135, w: 0.7061388}
+  m_LocalPosition: {x: -0.0043, y: 0.6058, z: 0.0253}
   m_LocalScale: {x: 0.08459001, y: 0.23445112, z: 0.116360076}
   m_Children: []
   m_Father: {fileID: 4541117759696618}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0.15400001, y: -0.164, z: 0.132}
+  m_LocalEulerAnglesHint: {x: -77.77801, y: 54.597004, z: -6.155}
 --- !u!4 &4459702601204420
 Transform:
   m_ObjectHideFlags: 1
@@ -737,7 +737,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1156661139583788}
   m_LocalRotation: {x: -0.6035975, y: 0.23645377, z: 0.18173054, w: 0.7394144}
-  m_LocalPosition: {x: -0.117759176, y: 0.63898015, z: -0.09243941}
+  m_LocalPosition: {x: -0.1056, y: 0.6398, z: -0.0692}
   m_LocalScale: {x: 0.08459246, y: 0.09230019, z: 0.11635545}
   m_Children: []
   m_Father: {fileID: 4541117759696618}
@@ -895,7 +895,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c8c8d6dee0065394385c1bcd3a3a50f0, type: 2}
+  - {fileID: 2100000, guid: b7e5bbe0de9fe4f45a0f9bbbe0f42b1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
