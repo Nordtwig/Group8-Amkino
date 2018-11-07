@@ -8,7 +8,10 @@ public class Player : MonoBehaviour {
     public float moveSpeed = 3;
     public float rotateSpeed = 5;
 
+    public GameObject Hearts;
+
     public int playerHitCount;
+    public int playerHealth = 100;
 
     private Vector3 offset;
 
@@ -50,9 +53,10 @@ public class Player : MonoBehaviour {
         {
             playerHitCount++;
 
-            if (playerHitCount == 3)
+            if (playerHitCount == 1)
             {
-                Destroy(gameObject);
+                GameObject Heart = GameObject.Find("Hearts/Heart3");
+                Heart.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
     }
