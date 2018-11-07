@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour {
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
 
+    public float fireRate = 1.0f;
+    private float lastShot = 0.0f;
+
     [Header("Tuning")]
     public float speed = 5;
 	
@@ -17,9 +20,10 @@ public class Bullet : MonoBehaviour {
 	
 	void Update () {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time > fireRate + lastShot)
         {
             Fire();
+            lastShot = Time.time;
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -11,7 +12,6 @@ public class Player : MonoBehaviour {
     public GameObject Hearts;
 
     public int playerHitCount;
-    public int playerHealth = 100;
 
     private Vector3 offset;
 
@@ -55,8 +55,22 @@ public class Player : MonoBehaviour {
 
             if (playerHitCount == 1)
             {
-                GameObject Heart = GameObject.Find("Hearts/Heart3");
-                Heart.GetComponent<SpriteRenderer>().enabled = false;
+                GameObject Hearts = GameObject.Find("Hearts/Heart3");
+                Hearts.GetComponent<Image>().enabled = false;
+            }
+
+            if (playerHitCount == 2)
+            {
+                GameObject Hearts = GameObject.Find("Hearts/Heart2");
+                Hearts.GetComponent<Image>().enabled = false;
+            }
+
+            if (playerHitCount == 3)
+            {
+                GameObject Hearts = GameObject.Find("Hearts/Heart1");
+                Hearts.GetComponent<Image>().enabled = false;
+
+                Destroy(gameObject);
             }
         }
     }
