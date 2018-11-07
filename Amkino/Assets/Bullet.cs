@@ -7,13 +7,15 @@ public class Bullet : MonoBehaviour {
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
 
-    public float fireRate = 1.0f;
+    public AudioClip BulletSound;
+
     private float lastShot = 0.0f;
 
     [Header("Tuning")]
     public float speed = 5;
-	
-	void Start () {
+    public float fireRate = 1.0f;
+
+    void Start () {
 		
 	}
 	
@@ -23,6 +25,7 @@ public class Bullet : MonoBehaviour {
         if (Input.GetMouseButton(0) && Time.time > fireRate + lastShot)
         {
             Fire();
+            AudioSource.PlayClipAtPoint(BulletSound, transform.position, 1f);
             lastShot = Time.time;
         }
     }

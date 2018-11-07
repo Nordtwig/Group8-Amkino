@@ -447,6 +447,21 @@ Prefab:
       propertyPath: Hearts
       value: 
       objectReference: {fileID: 167586183}
+    - target: {fileID: 114972305181205576, guid: b3c5339208c330b40a48e55328744c77,
+        type: 2}
+      propertyPath: WaterSplashAudio
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114972305181205576, guid: b3c5339208c330b40a48e55328744c77,
+        type: 2}
+      propertyPath: WaterSplash
+      value: 
+      objectReference: {fileID: 8300000, guid: 7354df082ef4fda46adb8a83f46d9a2d, type: 3}
+    - target: {fileID: 114972305181205576, guid: b3c5339208c330b40a48e55328744c77,
+        type: 2}
+      propertyPath: ManScream
+      value: 
+      objectReference: {fileID: 8300000, guid: e14b78e0e952ab044b8cf5b4dfe1cbcc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3c5339208c330b40a48e55328744c77, type: 2}
   m_IsPrefabAsset: 0
@@ -1515,7 +1530,7 @@ GameObject:
   - component: {fileID: 949122793}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2455,8 +2470,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1453205527295368, guid: c6a98c2867ad82c4caae36015c0a482a,
     type: 2}
   bulletSpawn: {fileID: 1573324999}
-  fireRate: 0.5
+  BulletSound: {fileID: 8300000, guid: 9f946796cd65d2c448a66bed02b50327, type: 3}
   speed: 5
+  fireRate: 0.5
 --- !u!1 &1690620430
 GameObject:
   m_ObjectHideFlags: 0

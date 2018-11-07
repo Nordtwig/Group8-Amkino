@@ -11,6 +11,9 @@ public class Player : MonoBehaviour {
 
     public GameObject Hearts;
 
+    public AudioClip WaterSplash;
+    public AudioClip ManScream;
+
     public int playerHitCount;
 
     private Vector3 offset;
@@ -52,11 +55,13 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.tag == "Bullet")
         {
             playerHitCount++;
+            AudioSource.PlayClipAtPoint(ManScream, transform.position, 1f);
 
             if (playerHitCount == 1)
             {
+                
                 GameObject Hearts = GameObject.Find("Hearts/Heart3");
-                Hearts.GetComponent<Image>().enabled = false;
+                Hearts.GetComponent<Image>().enabled = false; // GetComponent image needs using UnityEngine.UI; 
             }
 
             if (playerHitCount == 2)
@@ -72,6 +77,15 @@ public class Player : MonoBehaviour {
 
                 Destroy(gameObject);
             }
+
+            
         }
+
+        if (collision.gameObject.tag == "Water")
+        {
+            Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
+        }
+            
     }
 }
