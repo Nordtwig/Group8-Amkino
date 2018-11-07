@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour {
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+
+    [Header("Tuning")]
+    public float speed = 5;
 	
 	void Start () {
 		
@@ -29,7 +32,7 @@ public class Bullet : MonoBehaviour {
             bulletSpawn.rotation);
 
         // Add velocity to the bullet
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 1;
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * speed;
 
         // Destroy the bullet after 2 seconds
         
