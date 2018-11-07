@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
@@ -21,18 +22,37 @@ public class MenuController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         KeyNavigation();
+        MouseNavigation();
 
+        if (Input.GetMouseButtonUp(0)) {
+            switch (currentSelect) {
+                case 0:
+                    SceneManager.LoadScene(1);
+                    break;
+                case 1:
+                    SceneManager.LoadScene(2);
+                    break;
+                case 2:
+                    SceneManager.LoadScene(3);
+                    break;
+                case 3:
+                    SceneManager.LoadScene(4);
+                    break;
+                case 4:
+                    Application.Quit();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void MouseNavigation() {
         RaycastHit hit;
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out hit)) {
             if (hit.collider != null) {
                 GameObject target = hit.collider.gameObject;
-                //if (target.name == "Play") {
-                //    currentSelect = 0;
-                //    MoveSelection();
-                //}
                 switch (target.name) {
                     case "Play":
                         currentSelect = 0;
