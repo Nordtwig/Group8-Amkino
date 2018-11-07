@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.42122465, g: 0.45110852, b: 0.47159225, a: 1}
+  m_IndirectSpecularColor: {r: 0.42122462, g: 0.4511084, b: 0.4715922, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2103,6 +2103,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4671202920879298, guid: 0c985ea443f727f418c3a89d7608930b,
     type: 2}
   m_PrefabInternal: {fileID: 597883759}
+--- !u!1 &1573324998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1573324999}
+  m_Layer: 0
+  m_Name: Bullet Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1573324999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573324998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.364, y: 1.775, z: 1.817}
+  m_LocalScale: {x: 0, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1646785592}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1581098872
 Prefab:
   m_ObjectHideFlags: 0
@@ -2171,6 +2199,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4761665802547880, guid: 1b60b3137f0158b41a6dccdcc2020118,
     type: 2}
   m_PrefabInternal: {fileID: 960088689}
+--- !u!1 &1646785588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1719736677547710, guid: b3c5339208c330b40a48e55328744c77,
+    type: 2}
+  m_PrefabInternal: {fileID: 116949372}
+--- !u!4 &1646785592 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4927269159483000, guid: b3c5339208c330b40a48e55328744c77,
+    type: 2}
+  m_PrefabInternal: {fileID: 116949372}
+--- !u!114 &1646785593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1646785588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc9892cbe49d444086b6b8e25bb9db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1453205527295368, guid: c6a98c2867ad82c4caae36015c0a482a,
+    type: 2}
+  bulletSpawn: {fileID: 1573324999}
 --- !u!1 &1690620430
 GameObject:
   m_ObjectHideFlags: 0

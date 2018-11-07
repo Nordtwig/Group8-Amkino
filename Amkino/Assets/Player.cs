@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
     public float moveSpeed = 3;
     public float rotateSpeed = 5;
 
+    public int playerHitCount;
+
     private Vector3 offset;
 
     Rigidbody rb;
@@ -40,5 +42,18 @@ public class Player : MonoBehaviour {
 
         float z = Input.GetAxisRaw("Vertical") * moveSpeed;
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, z);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            playerHitCount++;
+
+            if (playerHitCount == 3)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
