@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public float rotateSpeed = 5;
 
     public GameObject Hearts;
+    public GameObject raycastTarget;
 
     public AudioClip WaterSplash;
     public AudioClip ManScream;

@@ -7,10 +7,12 @@ public class Enemy : MonoBehaviour {
 
     public Player player;
     public float rotateSpeed = 3;
+    public float detectionRange = 6;
 
     private NavMeshAgent agent;
     public bool seenPlayer = false;
     public bool aimingAtPlayer = false;
+    public GameObject raycastOrigin;
 
     // Use this for initialization
     void Start () {
@@ -19,21 +21,20 @@ public class Enemy : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Ray ray = new Ray(transform.position, player.transform.position);
         RaycastHit hit;
+        Ray ray = new Ray();
+        ray.origin = raycastOrigin.transform.position;
+        ray.direction = (player.raycastTarget.transform.position - raycastOrigin.transform.position).normalized;
 
+        Physics.Raycast(ray.origin, ray.direction, out hit, detectionRange);
         Debug.DrawRay(ray.origin, ray.direction, Color.green);
-        if (Physics.Raycast(ray.origin, ray.direction, out hit)) {
-            Debug.Log(hit.collider.tag);
-            if (hit.collider.tag == "Wall") {
-                Debug.Log("Player out of sight");
-                aimingAtPlayer = false;
-            }
-            else if (hit.collider.tag == "Player") {
+        if (hit.collider != null) {
+            if (hit.collider.tag == "Player") {
                 seenPlayer = true;
                 aimingAtPlayer = true;
             }
         }
+
         if (seenPlayer) {
             FollowPlayer(); 
         }
