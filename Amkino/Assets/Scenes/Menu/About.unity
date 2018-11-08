@@ -1853,7 +1853,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4869934429184032, guid: 1f2bc84127a72fb42b17bfbef514c79b, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869934429184032, guid: 1f2bc84127a72fb42b17bfbef514c79b, type: 2}
       propertyPath: m_LocalScale.x
@@ -2669,7 +2669,7 @@ TextMesh:
   m_GameObject: {fileID: 1909109015}
   m_Text: "Amkino, Is a taken name out of Amie ,Kian and Noah. \nThis is our second
     project making a game in groups, GP18.\nThis game is a top-down shooter in 3D.
-    In this game you\xB4re \ngonna meet Burt Lincoln and Dolf Grenlunds team. "
+    In this game you\xB4re \ngoing to meet Berta Lincoln and Dolf Grenlunds team. "
   m_OffsetZ: 1
   m_CharacterSize: 0.15
   m_LineSpacing: 1
