@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
     public Bullet bulletPrefab;
     public GameObject bulletSpawn;
     public GameObject raycastOrigin;
+    public Light muzzleFlash;
 
     public float rotateSpeed;
     public float detectionRange;
@@ -25,12 +26,18 @@ public class Enemy : MonoBehaviour {
     void Start () {
         player = FindObjectOfType<Player>();
         agent = GetComponent<NavMeshAgent>();
+
+        muzzleFlash.enabled = false;
     }
 
     // Update is called once per frame
     void Update () {
         fireTimer += Time.deltaTime;
         TrackPlayer();
+
+        if (fireTimer > (fireRate / 2)) {
+            muzzleFlash.enabled = false;
+        }
 
         if (fireTimer >= fireRate && aimingAtPlayer) {
             Fire();
@@ -65,6 +72,7 @@ public class Enemy : MonoBehaviour {
     private void Fire() {
         Bullet bullet = Instantiate(bulletPrefab);
         bullet.ShotByPlayer = false;
+        muzzleFlash.enabled = true;
         bullet.transform.position = bulletSpawn.transform.position;
         bullet.transform.forward = transform.forward;
     }
