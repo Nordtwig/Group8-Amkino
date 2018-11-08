@@ -171,7 +171,7 @@ public class Player : MonoBehaviour {
 
      void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "HealthPickup") ;
+        if (collision.gameObject.tag == "HealthPickup")
         {
             if (playerHitCount != 0)
             {
