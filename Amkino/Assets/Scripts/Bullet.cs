@@ -17,7 +17,8 @@ public class Bullet : MonoBehaviour {
     // Use this for initialization
     void Start () {
         lifeTimer = lifeDuration;
-	}
+        AudioSource.PlayClipAtPoint(BulletSound, transform.position, 1f);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,7 +32,6 @@ public class Bullet : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
    
-        AudioSource.PlayClipAtPoint(BulletSound, transform.position, 1f);
         Destroy(gameObject);
         
     }
