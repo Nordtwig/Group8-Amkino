@@ -1,26 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
 
-    public Player player;
-    public float rotateSpeed = 3;
-    public float detectionRange = 6;
+    Player player;
+
+    public Bullet bulletPrefab;
+    public GameObject bulletSpawn;
+    public GameObject raycastOrigin;
+
+    public float rotateSpeed;
+    public float detectionRange;
+    public float fireRate;
 
     private NavMeshAgent agent;
-    public bool seenPlayer = false;
-    public bool aimingAtPlayer = false;
-    public GameObject raycastOrigin;
+    private bool seenPlayer = false;
+    private bool aimingAtPlayer = false;
+    private float fireTimer;
 
     // Use this for initialization
     void Start () {
+        player = FindObjectOfType<Player>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update () {
+        fireTimer += Time.deltaTime;
         RaycastHit hit;
         Ray ray = new Ray();
         ray.origin = raycastOrigin.transform.position;
@@ -32,12 +41,26 @@ public class Enemy : MonoBehaviour {
             if (hit.collider.tag == "Player") {
                 seenPlayer = true;
                 aimingAtPlayer = true;
+                if (fireTimer >= fireRate && aimingAtPlayer) {
+                    Fire();
+                    fireTimer = 0;
+                }
+            }
+            else {
+                aimingAtPlayer = false;
             }
         }
 
         if (seenPlayer) {
             FollowPlayer(); 
         }
+    }
+
+    private void Fire() {
+        Bullet bullet = Instantiate(bulletPrefab);
+        bullet.ShotByPlayer = false;
+        bullet.transform.position = bulletSpawn.transform.position;
+        bullet.transform.forward = transform.forward;
     }
 
     private void FollowPlayer() {
