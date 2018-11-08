@@ -22,6 +22,9 @@ public class Player : MonoBehaviour {
 
     public int playerHitCount;
 
+    private bool recentlyHealed = false;
+    private float recentlyHealedTimer;
+
     private Vector3 offset;
     private float fireTimer;
     private bool recentlyHit = false;
@@ -40,6 +43,7 @@ public class Player : MonoBehaviour {
 
     void Update() {
         fireTimer += Time.deltaTime;
+        recentlyHealedTimer += Time.deltaTime;
 
         if (recentlyHit) {
             hitTimer += Time.deltaTime;
@@ -52,6 +56,12 @@ public class Player : MonoBehaviour {
         if (Input.GetMouseButton(0) && fireTimer >= fireRate) {
             Fire();
             fireTimer = 0;
+        }
+
+        if (recentlyHealedTimer > 2f)
+        {
+            recentlyHealed = false;
+            recentlyHealedTimer = 0;
         }
     }
 
@@ -130,5 +140,35 @@ public class Player : MonoBehaviour {
             AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
         }
             
+    }
+
+     void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "HealthPickup") ;
+        {
+            if (playerHitCount != 0)
+            {
+                playerHitCount -= 1;
+                recentlyHealed = true;
+                Destroy(collision.gameObject);
+            }
+
+
+            if (playerHitCount == 0)
+            {
+                GameObject Hearts = GameObject.Find("Hearts/Heart3");
+                Hearts.GetComponent<Image>().enabled = true;
+            }
+
+            if (playerHitCount == 1)
+            {
+                GameObject Hearts = GameObject.Find("Hearts/Heart2");
+                Hearts.GetComponent<Image>().enabled = true;
+            }
+
+
+            
+            
+        }
     }
 }
