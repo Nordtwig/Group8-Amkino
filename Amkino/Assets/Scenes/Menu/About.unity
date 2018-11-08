@@ -306,8 +306,62 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 179.99901}
+--- !u!1001 &182893822
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.0015782267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.840715
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.13840427
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.5234884
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -13.554001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -115.18001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865279110011368, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -8.4140005
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f4770ee5d59f7948ba654b26f3c347e, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &190076623
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +669,7 @@ Transform:
   m_Children:
   - {fileID: 1028027628}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486772086
 GameObject:
@@ -1868,7 +1922,7 @@ Transform:
   - {fileID: 90024137}
   - {fileID: 1690620432}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364232622
 GameObject:
@@ -2508,7 +2562,7 @@ Transform:
   - {fileID: 1791057292}
   - {fileID: 640941215}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1896106082
 GameObject:
@@ -2613,14 +2667,16 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1909109015}
-  m_Text: Hej jag heter Noah!
-  m_OffsetZ: 0
-  m_CharacterSize: 0.2
+  m_Text: "Amkino, Is a taken name out of Amie ,Kian and Noah. \nThis is our second
+    project making a game in groups, GP18.\nThis game is a top-down shooter in 3D.
+    In this game you\xB4re \ngonna meet Burt Lincoln and Dolf Grenlunds team. "
+  m_OffsetZ: 1
+  m_CharacterSize: 0.15
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 70
+  m_FontSize: 25
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 0}
@@ -2669,11 +2725,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1909109015}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 5.7, y: 0, z: -2.47}
+  m_LocalPosition: {x: -0.52, y: 0, z: -0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &1920233630
 GameObject:
