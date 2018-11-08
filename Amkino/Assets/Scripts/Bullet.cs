@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour {
 
     public AudioClip BulletSound;
 
+    [SerializeField]
+    ParticleSystem[] onHitEffects;
+
     public float speed = 8;
     public float lifeDuration = 2;
 
@@ -31,8 +34,12 @@ public class Bullet : MonoBehaviour {
 	}
 
     private void OnCollisionEnter(Collision collision) {
-   
+        if (collision.gameObject.tag == "Wall") {
+            Instantiate(onHitEffects[0], transform.position, Quaternion.Euler(-transform.rotation.eulerAngles));
+        }
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player") {
+            Instantiate(onHitEffects[1], transform.position, Quaternion.Euler(-transform.rotation.eulerAngles));
+        }
         Destroy(gameObject);
-        
     }
 }
