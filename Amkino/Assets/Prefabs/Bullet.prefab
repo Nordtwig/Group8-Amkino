@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4269465667174732}
   - component: {fileID: 114986318485023400}
+  - component: {fileID: 65021099066185652}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +38,6 @@ GameObject:
   - component: {fileID: 4042168371880616}
   - component: {fileID: 33159164448845256}
   - component: {fileID: 23638145645404924}
-  - component: {fileID: 136894972729868844}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 4496178764880558}
   - component: {fileID: 33727521418345396}
   - component: {fileID: 23124194345436300}
-  - component: {fileID: 136290869948731268}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -188,6 +187,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761854511139060}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65021099066185652
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158030733475912}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.95}
+  m_Center: {x: 0, y: 0, z: 1.01}
 --- !u!114 &114986318485023400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,29 +212,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   lifeDuration: 1.5
---- !u!136 &136290869948731268
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1761854511139060}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!136 &136894972729868844
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1605635138651114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     public float moveSpeed = 3;
     public float rotateSpeed = 5;
     public float fireRate = 0.25f;
+    public float noHitDuration = 0.5f;
 
     public GameObject raycastTarget;
     public GameObject bulletSpawn;
@@ -23,6 +24,8 @@ public class Player : MonoBehaviour {
 
     private Vector3 offset;
     private float fireTimer;
+    private bool recentlyHit = false;
+    private float hitTimer;
 
     Rigidbody rb;
 
@@ -37,6 +40,15 @@ public class Player : MonoBehaviour {
 
     void Update() {
         fireTimer += Time.deltaTime;
+
+        if (recentlyHit) {
+            hitTimer += Time.deltaTime;
+        }
+
+        if (hitTimer >= noHitDuration) {
+            recentlyHit = false;
+            hitTimer = 0;
+        }
         if (Input.GetMouseButton(0) && fireTimer >= fireRate) {
             Fire();
             fireTimer = 0;
@@ -82,8 +94,9 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet" && !recentlyHit)
         {
+            recentlyHit = true;
             playerHitCount++;
             AudioSource.PlayClipAtPoint(ManScream, transform.position, 1f);
 
