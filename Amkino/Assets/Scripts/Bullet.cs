@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+    public AudioClip BulletSound;
+
     public float speed = 8;
     public float lifeDuration = 2;
 
@@ -28,6 +30,9 @@ public class Bullet : MonoBehaviour {
 	}
 
     private void OnCollisionEnter(Collision collision) {
+   
+        AudioSource.PlayClipAtPoint(BulletSound, transform.position, 1f);
         Destroy(gameObject);
+        
     }
 }

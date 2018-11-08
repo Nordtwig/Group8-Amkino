@@ -1778,7 +1778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   rotateSpeed: 10
-  fireRate: 0.1
+  fireRate: 0.5
   noHitDuration: 0.5
   raycastTarget: {fileID: 1650074495617940}
   bulletSpawn: {fileID: 1699996388098756}
@@ -1786,7 +1786,10 @@ MonoBehaviour:
     type: 2}
   WaterSplash: {fileID: 8300000, guid: 7354df082ef4fda46adb8a83f46d9a2d, type: 3}
   ManScream: {fileID: 8300000, guid: e14b78e0e952ab044b8cf5b4dfe1cbcc, type: 3}
+  ReloadAudio: {fileID: 8300000, guid: 817b656571120ff40a3fb85e181c8165, type: 3}
   playerHitCount: 0
+  reloadTime: 1
+  maxAmmo: 3
 --- !u!136 &136830158599955328
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -19,11 +19,18 @@ public class Player : MonoBehaviour {
 
     public AudioClip WaterSplash;
     public AudioClip ManScream;
+    public AudioClip ReloadAudio;
 
     public int playerHitCount;
 
     private bool recentlyHealed = false;
     private float recentlyHealedTimer;
+
+    private float timeDuringReload;
+    public float reloadTime;
+    private bool reloading = false;
+    private float ammoCount;
+    public float maxAmmo;
 
     private Vector3 offset;
     private float fireTimer;
@@ -44,6 +51,7 @@ public class Player : MonoBehaviour {
     void Update() {
         fireTimer += Time.deltaTime;
         recentlyHealedTimer += Time.deltaTime;
+        
 
         if (recentlyHit) {
             hitTimer += Time.deltaTime;
@@ -53,8 +61,9 @@ public class Player : MonoBehaviour {
             recentlyHit = false;
             hitTimer = 0;
         }
-        if (Input.GetMouseButton(0) && fireTimer >= fireRate) {
+        if (Input.GetMouseButton(0) && fireTimer >= fireRate && reloading == false ) {
             Fire();
+            ammoCount++;
             fireTimer = 0;
         }
 
@@ -62,6 +71,24 @@ public class Player : MonoBehaviour {
         {
             recentlyHealed = false;
             recentlyHealedTimer = 0;
+        }
+
+        if (ammoCount == maxAmmo)
+        {
+            reloading = true;
+            AudioSource.PlayClipAtPoint(ReloadAudio, transform.position, 1f);
+            ammoCount = 0;
+        }
+        
+        if (reloading)
+        {
+            timeDuringReload += Time.deltaTime;
+            
+            if (timeDuringReload > reloadTime)
+            {
+                reloading = false;
+                timeDuringReload = 0;
+            }
         }
     }
 
