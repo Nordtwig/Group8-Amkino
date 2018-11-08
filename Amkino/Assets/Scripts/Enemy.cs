@@ -30,6 +30,19 @@ public class Enemy : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         fireTimer += Time.deltaTime;
+        TrackPlayer();
+
+        if (fireTimer >= fireRate && aimingAtPlayer) {
+            Fire();
+            fireTimer = 0;
+        }
+
+        if (seenPlayer) {
+            FollowPlayer();
+        }
+    }
+
+    private void TrackPlayer() {
         RaycastHit hit;
         Ray ray = new Ray();
         ray.origin = raycastOrigin.transform.position;
@@ -41,18 +54,11 @@ public class Enemy : MonoBehaviour {
             if (hit.collider.tag == "Player") {
                 seenPlayer = true;
                 aimingAtPlayer = true;
-                if (fireTimer >= fireRate && aimingAtPlayer) {
-                    Fire();
-                    fireTimer = 0;
-                }
+
             }
             else {
                 aimingAtPlayer = false;
             }
-        }
-
-        if (seenPlayer) {
-            FollowPlayer(); 
         }
     }
 
