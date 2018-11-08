@@ -45,27 +45,32 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-        
+        Rotate();
+        Move();
 
-        Plane playerPlane = new Plane(Vector3.up, transform.position);
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-
-        float hitDist = 0.0f;
-
-        if (playerPlane.Raycast (ray, out hitDist)) {
-            Vector3 targetPoint = ray.GetPoint(hitDist);
-            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-        }
-        
-
+        // Camera follows player.
         playerCamera.transform.position = rb.transform.position + offset;
+    }
 
+    private void Move() {
         float x = Input.GetAxisRaw("Horizontal") * moveSpeed;
         rb.velocity = new Vector3(x, rb.velocity.y, rb.velocity.z);
 
         float z = Input.GetAxisRaw("Vertical") * moveSpeed;
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, z);
+    }
+
+    void Rotate() {
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+        float hitDist = 0.0f;
+
+        if (playerPlane.Raycast(ray, out hitDist)) {
+            Vector3 targetPoint = ray.GetPoint(hitDist);
+            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+        }
     }
 
     void Fire() {
