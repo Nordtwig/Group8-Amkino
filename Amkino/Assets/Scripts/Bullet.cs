@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     public AudioClip BulletSound;
+    public AudioClip RicochetSound;
 
     [SerializeField]
     ParticleSystem[] onHitEffects;
@@ -35,6 +36,7 @@ public class Bullet : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Wall") {
+            AudioSource.PlayClipAtPoint(RicochetSound, transform.position, 1f);
             Instantiate(onHitEffects[0], transform.position, Quaternion.Euler(-transform.rotation.eulerAngles));
         }
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player") {

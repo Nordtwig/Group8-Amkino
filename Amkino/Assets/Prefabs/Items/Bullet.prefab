@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletSound: {fileID: 8300000, guid: 9f946796cd65d2c448a66bed02b50327, type: 3}
+  RicochetSound: {fileID: 8300000, guid: e509ea59a8e24ad498697484dd55dabe, type: 3}
   onHitEffects:
   - {fileID: 198296133443168644, guid: be402b4c136e4eb44a35ec1c5d967573, type: 2}
   - {fileID: 198353647016167612, guid: 86ffb01045b352f4bbbf2b81ee3e210f, type: 2}

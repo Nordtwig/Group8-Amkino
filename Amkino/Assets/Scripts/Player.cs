@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour {
 
@@ -172,24 +173,27 @@ public class Player : MonoBehaviour {
                 GameObject Hearts = GameObject.Find("Hearts/Heart1");
                 Hearts.GetComponent<Image>().enabled = false;
 
-                isDead = true;
-                gameObject.GetComponent<Collider>().enabled = false;
-                gameObject.GetComponent<Rigidbody>().useGravity = false;
-                transform.position = new Vector3(0, 0, 0);
+                Die();
             }
-
-            
         }
 
         if (collision.gameObject.tag == "Water")
         {
-            Destroy(gameObject);
             AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
+            Die();
         }
-            
+
     }
 
-     void OnTriggerEnter(Collider collision)
+    void Die() {
+        isDead = true;
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        transform.position = new Vector3(0, 0, 0);
+        enabled = false;
+    }
+
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "HealthPickup")
         {

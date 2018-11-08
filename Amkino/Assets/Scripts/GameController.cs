@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject EnemyPrefab;
     public GameObject ItemPrefab;
+    public Canvas GameOverScreen;
 
     private float enemyTimeSinceSpawn;
     private float itemTimeSinceSpawn;
@@ -21,7 +23,8 @@ public class GameController : MonoBehaviour {
     public float itemSpawnRate;
 
     void Start() {
-        player = FindObjectOfType<Player>();    
+        player = FindObjectOfType<Player>();
+        GameOverScreen.enabled = false;
     }
 
     // Update is called once per frame
@@ -29,8 +32,13 @@ public class GameController : MonoBehaviour {
         enemyTimeSinceSpawn += Time.deltaTime;
         itemTimeSinceSpawn += Time.deltaTime;
 
-        EnemySpawner();
-        ItemSpawner();
+        if (!player.IsDead) {
+            EnemySpawner();
+            ItemSpawner();
+        }
+        else {
+            GameOverScreen.enabled = true;
+        }
 
         GoMainMenu();
         RestartGame();
@@ -55,7 +63,6 @@ public class GameController : MonoBehaviour {
     void EnemySpawner() {
         if (enemyTimeSinceSpawn >= enemySpawnRate) {
             int randomIndex = UnityEngine.Random.Range(0, enemySpawnPoints.Length);
-
 
             for (int i = 0; i < enemySpawnPoints.Length; i++) {
                 if (randomIndex == i) {
