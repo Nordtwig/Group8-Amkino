@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet" && !recentlyHit)
         {
             recentlyHit = true;
             StartCoroutine("HitCooldown");
