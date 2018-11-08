@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public Camera playerCamera;
+    Camera playerCamera;
+    GameObject Hearts;
+
     public float moveSpeed = 3;
     public float rotateSpeed = 5;
+    public float fireRate = 0.25f;
 
-    public GameObject Hearts;
     public GameObject raycastTarget;
+    public GameObject bulletSpawn;
+    public Bullet bulletPrefab;
 
     public AudioClip WaterSplash;
     public AudioClip ManScream;
@@ -18,18 +22,31 @@ public class Player : MonoBehaviour {
     public int playerHitCount;
 
     private Vector3 offset;
+    private float fireTimer;
 
     Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
+        playerCamera = FindObjectOfType<Camera>();
+        Hearts = GameObject.Find("Hearts");
 
         offset = playerCamera.transform.position - transform.position;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    void Update() {
+        fireTimer += Time.deltaTime;
+        if (Input.GetMouseButton(0) && fireTimer >= fireRate) {
+            Fire();
+            fireTimer = 0;
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
+        
+
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -49,6 +66,13 @@ public class Player : MonoBehaviour {
 
         float z = Input.GetAxisRaw("Vertical") * moveSpeed;
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, z);
+    }
+
+    void Fire() {
+        Bullet bullet = Instantiate(bulletPrefab);
+        bullet.ShotByPlayer = true;
+        bullet.transform.position = bulletSpawn.transform.position;
+        bullet.transform.forward = transform.forward;
     }
 
     void OnCollisionEnter(Collision collision)
