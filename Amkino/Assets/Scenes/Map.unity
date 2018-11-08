@@ -160,6 +160,7 @@ MonoBehaviour:
     type: 2}
   ItemPrefab: {fileID: 1262511654108616, guid: 59ba9fd09b3361042a159dd43f3dbc7c, type: 2}
   GameOverScreen: {fileID: 1120199097}
+  HealthHUD: {fileID: 656810665}
   enemySpawnRate: 3
   itemSpawnRate: 4
 --- !u!4 &449016
@@ -1252,6 +1253,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!223 &656810665 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 223895372054452108, guid: e143bd0bce538e644be49781e4f53bb8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1860313321}
 --- !u!1001 &724643557
 Prefab:
   m_ObjectHideFlags: 0
@@ -1552,7 +1558,7 @@ GameObject:
   - component: {fileID: 906533043}
   - component: {fileID: 906533042}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DiedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3688,7 +3694,7 @@ GameObject:
   - component: {fileID: 2005037458}
   - component: {fileID: 2005037457}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: DeathInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

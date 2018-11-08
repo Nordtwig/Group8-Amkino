@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
     public GameObject EnemyPrefab;
     public GameObject ItemPrefab;
     public Canvas GameOverScreen;
+    public Canvas HealthHUD;
 
     private float enemyTimeSinceSpawn;
     private float itemTimeSinceSpawn;
@@ -27,7 +28,6 @@ public class GameController : MonoBehaviour {
         GameOverScreen.enabled = false;
     }
 
-    // Update is called once per frame
     void Update () {
         enemyTimeSinceSpawn += Time.deltaTime;
         itemTimeSinceSpawn += Time.deltaTime;
@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour {
             ItemSpawner();
         }
         else {
-            GameOverScreen.enabled = true;
+            StartCoroutine("StartGameOver");
         }
 
         GoMainMenu();
@@ -87,5 +87,11 @@ public class GameController : MonoBehaviour {
 
             itemTimeSinceSpawn = 0;
         }
+    }
+
+    IEnumerator StartGameOver() {
+        yield return new WaitForSeconds(1);
+        GameOverScreen.enabled = true;
+        HealthHUD.enabled = false;
     }
 }
