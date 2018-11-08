@@ -75,4 +75,15 @@ public class Enemy : MonoBehaviour {
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
         agent.SetDestination(player.transform.position);
     }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+
+        {
+            Destroy(gameObject);
+        }
+
+    }
 }
