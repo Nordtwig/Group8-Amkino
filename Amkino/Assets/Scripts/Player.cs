@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
 
     public GameObject raycastTarget;
     public GameObject bulletSpawn;
+    public Light muzzleFlash;
     public Bullet bulletPrefab;
 
     public AudioClip WaterSplash;
@@ -45,13 +46,20 @@ public class Player : MonoBehaviour {
         playerCamera = FindObjectOfType<Camera>();
         Hearts = GameObject.Find("Hearts");
 
+        muzzleFlash.enabled = false;
         offset = playerCamera.transform.position - transform.position;
 	}
 
     void Update() {
         fireTimer += Time.deltaTime;
-        recentlyHealedTimer += Time.deltaTime;
-        
+
+        if (fireTimer > (fireRate / 2)) {
+            muzzleFlash.enabled = false;
+        }
+
+        if (recentlyHealed) {
+            recentlyHealedTimer += Time.deltaTime;
+        }
 
         if (recentlyHit) {
             hitTimer += Time.deltaTime;
@@ -129,6 +137,7 @@ public class Player : MonoBehaviour {
     void Fire() {
         Bullet bullet = Instantiate(bulletPrefab);
         bullet.ShotByPlayer = true;
+        muzzleFlash.enabled = true;
         bullet.transform.position = bulletSpawn.transform.position;
         bullet.transform.forward = transform.forward;
     }
