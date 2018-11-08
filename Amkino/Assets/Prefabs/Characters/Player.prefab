@@ -1779,6 +1779,7 @@ MonoBehaviour:
   moveSpeed: 3
   rotateSpeed: 10
   fireRate: 0.1
+  noHitDuration: 0.5
   raycastTarget: {fileID: 1650074495617940}
   bulletSpawn: {fileID: 1699996388098756}
   bulletPrefab: {fileID: 114986318485023400, guid: c6a98c2867ad82c4caae36015c0a482a,

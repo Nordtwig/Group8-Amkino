@@ -24,7 +24,7 @@ public class MenuController : MonoBehaviour {
         KeyNavigation();
         MouseNavigation();
 
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space)) {
             switch (currentSelect) {
                 case 0:
                     SceneManager.LoadScene(1);
