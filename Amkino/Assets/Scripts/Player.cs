@@ -90,6 +90,10 @@ public class Player : MonoBehaviour {
                 timeDuringReload = 0;
             }
         }
+
+        if (Input.GetKeyUp(KeyCode.Escape)) {
+            Application.Quit();
+        }
     }
 
     // Update is called once per frame
