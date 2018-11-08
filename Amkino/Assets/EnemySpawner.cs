@@ -8,23 +8,30 @@ public class EnemySpawner : MonoBehaviour {
 
     public GameObject EnemyPrefab;
 
+    private float TimeSinceSpawn;
+    public float TimeBetweenSpawns;
+
 	// Use this for initialization
-	void Start () {
+	void Update () {
 
-        int randomIndex = Random.Range(0, spawnPoints.Length);
-
-
-        for (int i = 0; i < spawnPoints.Length; i++)
+        TimeSinceSpawn += Time.deltaTime;
+        if (TimeSinceSpawn >= TimeBetweenSpawns)
         {
-            if (randomIndex == i)
+            int randomIndex = Random.Range(0, spawnPoints.Length);
+
+
+            for (int i = 0; i < spawnPoints.Length; i++)
             {
-                Instantiate(EnemyPrefab, spawnPoints[i].position, Quaternion.identity);
+                if (randomIndex == i)
+                {
+                    Instantiate(EnemyPrefab, spawnPoints[i].position, Quaternion.identity);
+                }
             }
+
+            TimeSinceSpawn = 0;
         }
+       
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	
 }
