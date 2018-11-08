@@ -33,18 +33,20 @@ public class Enemy : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         fireTimer += Time.deltaTime;
-        TrackPlayer();
+        if (!player.IsDead) {
+            TrackPlayer();
+        }
 
         if (fireTimer > (fireRate / 2)) {
             muzzleFlash.enabled = false;
         }
 
-        if (fireTimer >= fireRate && aimingAtPlayer) {
+        if (fireTimer >= fireRate && aimingAtPlayer && !player.IsDead) {
             Fire();
             fireTimer = 0;
         }
 
-        if (seenPlayer) {
+        if (seenPlayer && !player.IsDead) {
             FollowPlayer();
         }
     }

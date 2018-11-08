@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 
     Camera playerCamera;
     GameObject Hearts;
+    Rigidbody rb;
 
     public float moveSpeed = 3;
     public float rotateSpeed = 5;
@@ -24,6 +25,9 @@ public class Player : MonoBehaviour {
 
     public int playerHitCount;
 
+    private bool isDead = false;
+    public bool IsDead { get { return isDead; } protected set { isDead = value; } }
+
     private bool recentlyHealed = false;
     private float recentlyHealedTimer;
 
@@ -38,7 +42,7 @@ public class Player : MonoBehaviour {
     private bool recentlyHit = false;
     private float hitTimer;
 
-    Rigidbody rb;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -47,6 +51,8 @@ public class Player : MonoBehaviour {
         Hearts = GameObject.Find("Hearts");
 
         muzzleFlash.enabled = false;
+        
+        
         offset = playerCamera.transform.position - transform.position;
 	}
 
@@ -98,10 +104,6 @@ public class Player : MonoBehaviour {
                 timeDuringReload = 0;
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.Escape)) {
-            Application.Quit();
-        }
     }
 
     // Update is called once per frame
@@ -110,7 +112,9 @@ public class Player : MonoBehaviour {
         Move();
 
         // Camera follows player.
-        playerCamera.transform.position = rb.transform.position + offset;
+        if (!isDead) {
+            playerCamera.transform.position = rb.transform.position + offset;
+        }
     }
 
     private void Move() {
@@ -168,7 +172,10 @@ public class Player : MonoBehaviour {
                 GameObject Hearts = GameObject.Find("Hearts/Heart1");
                 Hearts.GetComponent<Image>().enabled = false;
 
-                Destroy(gameObject);
+                isDead = true;
+                gameObject.GetComponent<Collider>().enabled = false;
+                gameObject.GetComponent<Rigidbody>().useGravity = false;
+                transform.position = new Vector3(0, 0, 0);
             }
 
             

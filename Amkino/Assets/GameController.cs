@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
+
+    Player player;
 
     public Transform[] enemySpawnPoints;
     public Transform[] itemSpawnPoints;
@@ -16,17 +19,40 @@ public class GameController : MonoBehaviour {
 
     public float enemySpawnRate;
     public float itemSpawnRate;
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Start() {
+        player = FindObjectOfType<Player>();    
+    }
+
+    // Update is called once per frame
+    void Update () {
         enemyTimeSinceSpawn += Time.deltaTime;
         itemTimeSinceSpawn += Time.deltaTime;
 
         EnemySpawner();
         ItemSpawner();
+
+        GoMainMenu();
+        RestartGame();
 	}
 
-    private void EnemySpawner() {
+    void RestartGame() {
+        if (Input.GetKeyUp(KeyCode.Space) && player.IsDead) {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene("Map");
+        }
+    }
+
+    void GoMainMenu() {
+        if (Input.GetKeyUp(KeyCode.Escape)) {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene("Menu");
+        }
+    }
+
+    void EnemySpawner() {
         if (enemyTimeSinceSpawn >= enemySpawnRate) {
             int randomIndex = UnityEngine.Random.Range(0, enemySpawnPoints.Length);
 
@@ -41,7 +67,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void ItemSpawner() {
+    void ItemSpawner() {
         if (itemTimeSinceSpawn >= itemSpawnRate) {
             int randomIndex = UnityEngine.Random.Range(0, itemSpawnPoints.Length);
 
