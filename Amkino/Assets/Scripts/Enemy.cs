@@ -16,11 +16,13 @@ public class Enemy : MonoBehaviour {
     public float rotateSpeed;
     public float detectionRange;
     public float fireRate;
+    public float health = 3;
 
     private NavMeshAgent agent;
     private bool seenPlayer = false;
     private bool aimingAtPlayer = false;
     private float fireTimer;
+    private bool recentlyHit = false;
 
     // Use this for initialization
     void Start () {
@@ -90,10 +92,18 @@ public class Enemy : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
-
         {
-            Destroy(gameObject);
+            recentlyHit = true;
+            StartCoroutine("HitCooldown");
+            health--;
+            if (health <= 0) {
+                Destroy(gameObject);
+            }
         }
+    }
 
+    IEnumerator HitCooldown() {
+        yield return new WaitForSeconds(0.1f);
+        recentlyHit = false;
     }
 }

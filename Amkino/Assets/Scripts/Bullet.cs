@@ -38,10 +38,11 @@ public class Bullet : MonoBehaviour {
         if (collision.gameObject.tag == "Wall") {
             AudioSource.PlayClipAtPoint(RicochetSound, transform.position, 1f);
             Instantiate(onHitEffects[0], transform.position, Quaternion.Euler(-transform.rotation.eulerAngles));
+            Destroy(gameObject);
         }
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player") {
             Instantiate(onHitEffects[1], transform.position, Quaternion.Euler(-transform.rotation.eulerAngles));
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
