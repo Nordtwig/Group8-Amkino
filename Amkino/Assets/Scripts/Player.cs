@@ -145,6 +145,7 @@ public class Player : MonoBehaviour {
     void Fire() {
         Bullet bullet = Instantiate(bulletPrefab);
         GameObject casing = Instantiate(casingPrefab, ejectionPort.transform.position, Quaternion.identity);
+        Physics.IgnoreCollision(casing.GetComponent<Collider>(), GetComponent<Collider>());
         casing.transform.position = ejectionPort.transform.position;
         casing.GetComponent<Rigidbody>().AddForce(transform.right * 1.25f, ForceMode.Impulse);
         bullet.ShotByPlayer = true;
