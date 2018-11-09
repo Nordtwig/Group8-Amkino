@@ -7,7 +7,6 @@ using System;
 public class Player : MonoBehaviour {
 
     Camera playerCamera;
-    GameObject Hearts;
     Rigidbody rb;
 
     public float moveSpeed = 3;
@@ -52,7 +51,6 @@ public class Player : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         playerCamera = FindObjectOfType<Camera>();
-        Hearts = GameObject.Find("Hearts");
 
         muzzleFlash.enabled = false;
         
@@ -166,19 +164,19 @@ public class Player : MonoBehaviour {
             if (playerHitCount == 1)
             {
                 
-                GameObject Hearts = GameObject.Find("Hearts/Heart3");
+                GameObject Hearts = GameObject.Find("HUD/Heart3");
                 Hearts.GetComponent<Image>().enabled = false; // GetComponent image needs using UnityEngine.UI; 
             }
 
             if (playerHitCount == 2)
             {
-                GameObject Hearts = GameObject.Find("Hearts/Heart2");
+                GameObject Hearts = GameObject.Find("HUD/Heart2");
                 Hearts.GetComponent<Image>().enabled = false;
             }
 
             if (playerHitCount == 3)
             {
-                GameObject Hearts = GameObject.Find("Hearts/Heart1");
+                GameObject Hearts = GameObject.Find("HUD/Heart1");
                 Hearts.GetComponent<Image>().enabled = false;
 
                 Die();
@@ -208,13 +206,13 @@ public class Player : MonoBehaviour {
 
             if (playerHitCount == 0)
             {
-                GameObject Hearts = GameObject.Find("Hearts/Heart3");
+                GameObject Hearts = GameObject.Find("HUD/Heart3");
                 Hearts.GetComponent<Image>().enabled = true;
             }
 
             if (playerHitCount == 1)
             {
-                GameObject Hearts = GameObject.Find("Hearts/Heart2");
+                GameObject Hearts = GameObject.Find("HUD/Heart2");
                 Hearts.GetComponent<Image>().enabled = true;
             }
         }

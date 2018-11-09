@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.42122462, g: 0.4511084, b: 0.4715922, a: 1}
+  m_IndirectSpecularColor: {r: 0.42122465, g: 0.45110852, b: 0.47159225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -159,7 +159,7 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 1370756753763488, guid: 9ed699e776129a44c8c6053d111dc24a,
     type: 2}
   ItemPrefab: {fileID: 1262511654108616, guid: 59ba9fd09b3361042a159dd43f3dbc7c, type: 2}
-  CrosshairPrefab: {fileID: 21300000, guid: 8dce537d08f76284dad35f128cb2ce1c, type: 3}
+  CrosshairPrefab: {fileID: 1860313322}
   GameOverScreen: {fileID: 1120199097}
   HealthHUD: {fileID: 656810665}
   enemySpawnRate: 3
@@ -3501,9 +3501,19 @@ Prefab:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1757037797821286, guid: e143bd0bce538e644be49781e4f53bb8, type: 2}
+      propertyPath: m_Name
+      value: HUD
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e143bd0bce538e644be49781e4f53bb8, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1860313322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114132112331357068, guid: e143bd0bce538e644be49781e4f53bb8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1860313321}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!4 &1886582799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4761665802547880, guid: 1b60b3137f0158b41a6dccdcc2020118,
