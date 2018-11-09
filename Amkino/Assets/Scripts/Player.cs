@@ -150,6 +150,7 @@ public class Player : MonoBehaviour {
         muzzleFlash.enabled = true;
         bullet.transform.position = bulletSpawn.transform.position;
         bullet.transform.forward = transform.forward;
+        Destroy(casing, 5f);
     }
 
     void OnCollisionEnter(Collision collision)
