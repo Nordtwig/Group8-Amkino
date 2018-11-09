@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour {
     // Use this for initialization
     void Start () {
         lifeTimer = lifeDuration;
-        AudioSource.PlayClipAtPoint(BulletSound, transform.position, 1f);
+        AudioSource.PlayClipAtPoint(BulletSound, transform.position, 0.5f);
     }
 	
 	// Update is called once per frame
