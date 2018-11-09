@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
             recentlyHealedTimer = 0;
         }
 
-        if (ammoCount == maxAmmo)
+        if (ammoCount == maxAmmo || Input.GetKeyDown("r"))
         {
             reloading = true;
             AudioSource.PlayClipAtPoint(ReloadAudio, transform.position, 1f);
