@@ -25,6 +25,7 @@ public class Player : MonoBehaviour {
     public AudioClip WaterSplash;
     public AudioClip ManScream;
     public AudioClip ReloadAudio;
+    public AudioClip HeartPickupAudio;
 
     public int playerHitCount;
 
@@ -200,6 +201,7 @@ public class Player : MonoBehaviour {
             {
                 playerHitCount -= 1;
                 recentlyHealed = true;
+                AudioSource.PlayClipAtPoint(HeartPickupAudio, transform.position, 1f);
                 Destroy(collision.gameObject);
             }
 
