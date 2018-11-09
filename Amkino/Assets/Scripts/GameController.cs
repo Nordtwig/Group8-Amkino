@@ -28,9 +28,10 @@ public class GameController : MonoBehaviour {
         player = FindObjectOfType<Player>();
         GameOverScreen.enabled = false;
         Cursor.visible = false;
+        
     }
 
-    void Update () {
+    void Update() {
         enemyTimeSinceSpawn += Time.deltaTime;
         itemTimeSinceSpawn += Time.deltaTime;
 
@@ -44,9 +45,10 @@ public class GameController : MonoBehaviour {
 
         CrosshairPrefab.transform.position = Input.mousePosition;
 
+        GameScore();
         GoMainMenu();
         RestartGame();
-	}
+    }
 
     void RestartGame() {
         if (Input.GetKeyUp(KeyCode.Space) && player.IsDead) {
@@ -97,5 +99,15 @@ public class GameController : MonoBehaviour {
         yield return new WaitForSeconds(1);
         GameOverScreen.enabled = true;
         HealthHUD.enabled = false;
+    }
+
+    void GameScore() { 
+
+        if (!player.IsDead)
+        {
+
+            GameObject GameScore = GameObject.Find("HUD/GameScore");
+            GameScore.GetComponent<Text>().text = Time.timeSinceLevelLoad.ToString("0"); //kanske multiplicera detta på något sätt? 
+        }
     }
 }

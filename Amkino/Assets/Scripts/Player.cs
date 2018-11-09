@@ -188,7 +188,7 @@ public class Player : MonoBehaviour {
         isDead = true;
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(0, -5, 0);
         enabled = false;
     }
 
@@ -200,7 +200,7 @@ public class Player : MonoBehaviour {
             {
                 playerHitCount -= 1;
                 recentlyHealed = true;
-                AudioSource.PlayClipAtPoint(HeartPickupAudio, transform.position, 1f);
+                AudioSource.PlayClipAtPoint(HeartPickupAudio, transform.position, 0.5f);
                 Destroy(collision.gameObject);
             }
 
