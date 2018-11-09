@@ -1944,7 +1944,8 @@ Prefab:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 82618328832020658, guid: 0a70df0dd9281ec4983e39f84d3c8bb3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 0a70df0dd9281ec4983e39f84d3c8bb3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1037784933 stripped
@@ -2844,6 +2845,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4761665802547880, guid: 1b60b3137f0158b41a6dccdcc2020118,
     type: 2}
   m_PrefabInternal: {fileID: 1699651322}
+--- !u!1001 &1631928431
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1999067970ccc1449911db61c38584ec, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!4 &1633630662 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4761665802547880, guid: 1b60b3137f0158b41a6dccdcc2020118,
