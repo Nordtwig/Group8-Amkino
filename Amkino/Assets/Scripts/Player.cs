@@ -21,6 +21,8 @@ public class Player : MonoBehaviour {
     public GameObject ejectionPort;
     public GameObject casingPrefab;
 
+    public GameObject AmmoLeft;
+
     public AudioClip WaterSplash;
     public AudioClip ManScream;
     public AudioClip ReloadAudio;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour {
     public float reloadTime;
     private bool reloading = false;
     private float ammoCount;
+    private float ammoLeft;
     public float maxAmmo;
 
     private Vector3 offset;
@@ -53,13 +56,17 @@ public class Player : MonoBehaviour {
         playerCamera = FindObjectOfType<Camera>();
 
         muzzleFlash.enabled = false;
-        
-        
+
+        ammoLeft = maxAmmo;
+
         offset = playerCamera.transform.position - transform.position;
 	}
 
     void Update() {
         fireTimer += Time.deltaTime;
+        
+
+        AmmoLeft.GetComponent<Text>().text = ammoLeft.ToString();
 
         if (fireTimer > (fireRate / 2)) {
             muzzleFlash.enabled = false;
@@ -80,6 +87,7 @@ public class Player : MonoBehaviour {
         if (Input.GetMouseButton(0) && fireTimer >= fireRate && reloading == false ) {
             Fire();
             ammoCount++;
+            ammoLeft--;
             fireTimer = 0;
         }
 
@@ -91,8 +99,10 @@ public class Player : MonoBehaviour {
 
         if (ammoCount == maxAmmo || Input.GetKeyDown("r"))
         {
+            
             reloading = true;
             AudioSource.PlayClipAtPoint(ReloadAudio, transform.position, 1f);
+            
             ammoCount = 0;
         }
         
@@ -103,6 +113,7 @@ public class Player : MonoBehaviour {
             if (timeDuringReload > reloadTime)
             {
                 reloading = false;
+                ammoLeft = maxAmmo;
                 timeDuringReload = 0;
             }
         }
