@@ -97,7 +97,7 @@ public class Player : MonoBehaviour {
             recentlyHealedTimer = 0;
         }
 
-        if (ammoCount == maxAmmo || Input.GetKeyDown("r"))
+        if (ammoCount == maxAmmo || Input.GetKeyDown("r") && ammoCount != 0)
         {
             
             reloading = true;
