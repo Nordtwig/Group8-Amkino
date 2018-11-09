@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
     public GameObject bulletSpawn;
     public Light muzzleFlash;
     public Bullet bulletPrefab;
+    public GameObject ejectionPort;
+    public GameObject casingPrefab;
 
     public AudioClip WaterSplash;
     public AudioClip ManScream;
@@ -141,6 +143,9 @@ public class Player : MonoBehaviour {
 
     void Fire() {
         Bullet bullet = Instantiate(bulletPrefab);
+        GameObject casing = Instantiate(casingPrefab, ejectionPort.transform.position, Quaternion.identity);
+        casing.transform.position = ejectionPort.transform.position;
+        casing.GetComponent<Rigidbody>().AddForce(transform.right * 1.25f, ForceMode.Impulse);
         bullet.ShotByPlayer = true;
         muzzleFlash.enabled = true;
         bullet.transform.position = bulletSpawn.transform.position;
