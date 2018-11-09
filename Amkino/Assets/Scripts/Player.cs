@@ -182,13 +182,6 @@ public class Player : MonoBehaviour {
                 Die();
             }
         }
-
-        if (collision.gameObject.tag == "Water")
-        {
-            AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
-            Die();
-        }
-
     }
 
     void Die() {
@@ -210,7 +203,6 @@ public class Player : MonoBehaviour {
                 Destroy(collision.gameObject);
             }
 
-
             if (playerHitCount == 0)
             {
                 GameObject Hearts = GameObject.Find("Hearts/Heart3");
@@ -222,10 +214,11 @@ public class Player : MonoBehaviour {
                 GameObject Hearts = GameObject.Find("Hearts/Heart2");
                 Hearts.GetComponent<Image>().enabled = true;
             }
+        }
 
-
-            
-            
+        if (collision.gameObject.tag == "Water") {
+            AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
+            Die();
         }
     }
 }
