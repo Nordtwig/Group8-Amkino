@@ -14,8 +14,11 @@ public class GameController : MonoBehaviour {
 
     public GameObject EnemyPrefab;
     public GameObject ItemPrefab;
+    public Sprite CrosshairPrefab; //Här lägger jag in crosshair-prefaben /kian
     public Canvas GameOverScreen;
     public Canvas HealthHUD;
+
+    private Vector3 mouseposition = Input.mousePosition;
 
     private float enemyTimeSinceSpawn;
     private float itemTimeSinceSpawn;
@@ -26,6 +29,7 @@ public class GameController : MonoBehaviour {
     void Start() {
         player = FindObjectOfType<Player>();
         GameOverScreen.enabled = false;
+        Cursor.visible = false; // sätter muspekarens synlighet till false /kian
     }
 
     void Update () {
@@ -39,6 +43,10 @@ public class GameController : MonoBehaviour {
         else {
             StartCoroutine("StartGameOver");
         }
+
+        //CrosshairPrefab = mouseposition; // Här måste crosshairens position sättas till muspekarens position /kian
+
+
 
         GoMainMenu();
         RestartGame();
