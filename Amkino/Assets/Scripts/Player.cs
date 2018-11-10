@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
     public Bullet bulletPrefab;
     public GameObject ejectionPort;
     public GameObject casingPrefab;
+    public ParticleSystem waterSplashEffect;
 
     public GameObject AmmoLeft;
 
@@ -230,6 +231,9 @@ public class Player : MonoBehaviour {
 
         if (collision.gameObject.tag == "Water") {
             AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
+            waterSplashEffect = Instantiate(waterSplashEffect, transform.position, Quaternion.identity);
+            waterSplashEffect.transform.localScale = new Vector3(2, 2, 2);
+            Destroy(waterSplashEffect, 0.5f);
             Die();
         }
     }

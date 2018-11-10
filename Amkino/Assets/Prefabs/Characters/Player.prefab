@@ -1884,6 +1884,8 @@ MonoBehaviour:
   ejectionPort: {fileID: 1841030471430390}
   casingPrefab: {fileID: 1237965775752284, guid: 95c8f02db8357d146a9031421b8b79d5,
     type: 2}
+  waterSplashEffect: {fileID: 198464901832140592, guid: 2fb72eab854644e4aadc5df2155771e7,
+    type: 2}
   AmmoLeft: {fileID: 0}
   WaterSplash: {fileID: 8300000, guid: 7354df082ef4fda46adb8a83f46d9a2d, type: 3}
   ManScream: {fileID: 8300000, guid: e14b78e0e952ab044b8cf5b4dfe1cbcc, type: 3}
