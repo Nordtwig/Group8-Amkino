@@ -377,6 +377,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1833533278686002
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4300378946856182}
+  m_Layer: 0
+  m_Name: EjectionPort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1862218866586382
 GameObject:
   m_ObjectHideFlags: 1
@@ -593,6 +608,7 @@ Transform:
   - {fileID: 4110346018355330}
   - {fileID: 4660969043505042}
   - {fileID: 4623049312852096}
+  - {fileID: 4300378946856182}
   - {fileID: 4632545189638756}
   - {fileID: 4649769133102640}
   - {fileID: 4743445368416092}
@@ -601,6 +617,19 @@ Transform:
   - {fileID: 4395049704338706}
   m_Father: {fileID: 4682943435177518}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4300378946856182
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833533278686002}
+  m_LocalRotation: {x: 0.001089204, y: 0.0000000074505797, z: 1.09139356e-11, w: 0.9999994}
+  m_LocalPosition: {x: 0.080750525, y: -0.03922832, z: 0.0683634}
+  m_LocalScale: {x: 0.09729002, y: 0.2565721, z: 0.15366079}
+  m_Children: []
+  m_Father: {fileID: 4253630546061596}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4319342486937372
 Transform:
@@ -639,7 +668,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4253630546061596}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4402643192999768
 Transform:
@@ -726,7 +755,7 @@ Transform:
   m_LocalScale: {x: 0.097289994, y: 0.25657213, z: 0.15366079}
   m_Children: []
   m_Father: {fileID: 4253630546061596}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0.125, y: 0, z: 0}
 --- !u!4 &4649769133102640
 Transform:
@@ -739,7 +768,7 @@ Transform:
   m_LocalScale: {x: 0.1060561, y: 0.14661822, z: 0.10605616}
   m_Children: []
   m_Father: {fileID: 4253630546061596}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4660969043505042
 Transform:
@@ -807,7 +836,7 @@ Transform:
   m_LocalScale: {x: 0.10225347, y: 0.034701698, z: 0.10225352}
   m_Children: []
   m_Father: {fileID: 4253630546061596}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4770629235778374
 Transform:
@@ -820,7 +849,7 @@ Transform:
   m_LocalScale: {x: 0.09728947, y: 0.10894212, z: 0.23022558}
   m_Children: []
   m_Father: {fileID: 4253630546061596}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0.125, y: 0, z: 0}
 --- !u!4 &4773135734502066
 Transform:
@@ -873,7 +902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4253630546061596}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4943758883225020
 Transform:
@@ -1851,6 +1880,12 @@ MonoBehaviour:
   bulletSpawn: {fileID: 1903442363710338}
   raycastOrigin: {fileID: 1579623735051034}
   muzzleFlash: {fileID: 108178932564384812}
+  waterSplashEffect: {fileID: 198464901832140592, guid: 2fb72eab854644e4aadc5df2155771e7,
+    type: 2}
+  WaterSplash: {fileID: 8300000, guid: 7354df082ef4fda46adb8a83f46d9a2d, type: 3}
+  ejectionPort: {fileID: 1833533278686002}
+  casingPrefab: {fileID: 1237965775752284, guid: 95c8f02db8357d146a9031421b8b79d5,
+    type: 2}
   rotateSpeed: 8
   detectionRange: 7
   fireRate: 0.2

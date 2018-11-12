@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour {
     public GameObject bulletSpawn;
     public GameObject raycastOrigin;
     public Light muzzleFlash;
+    public ParticleSystem waterSplashEffect;
+    public AudioClip WaterSplash;
+    public GameObject ejectionPort;
+    public GameObject casingPrefab;
 
     public float rotateSpeed;
     public float detectionRange;
@@ -19,7 +23,7 @@ public class Enemy : MonoBehaviour {
     public float health = 3;
 
     private NavMeshAgent agent;
-    private bool seenPlayer = false;
+    private bool seenPlayer = true;
     private bool aimingAtPlayer = false;
     private float fireTimer;
     private bool recentlyHit = false;
@@ -75,10 +79,15 @@ public class Enemy : MonoBehaviour {
 
     private void Fire() {
         Bullet bullet = Instantiate(bulletPrefab);
+        GameObject casing = Instantiate(casingPrefab, ejectionPort.transform.position, Quaternion.identity);
+        Physics.IgnoreCollision(casing.GetComponent<Collider>(), GetComponent<Collider>());
+        casing.transform.position = ejectionPort.transform.position;
+        casing.GetComponent<Rigidbody>().AddForce(transform.right * 1.25f, ForceMode.Impulse);
         bullet.ShotByPlayer = false;
         muzzleFlash.enabled = true;
         bullet.transform.position = bulletSpawn.transform.position;
         bullet.transform.forward = transform.forward;
+        Destroy(casing, 5f);
     }
 
     private void FollowPlayer() {
@@ -88,6 +97,15 @@ public class Enemy : MonoBehaviour {
         agent.SetDestination(player.transform.position);
     }
 
+    private void Die() {
+        float randomForce = UnityEngine.Random.Range(-1, 1);
+        GameController.OnEnemyDie();
+        Rigidbody rb = GetComponent<Rigidbody>();
+        agent.enabled = false;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(new Vector3(transform.position.x + randomForce, transform.position.y, transform.position.z + randomForce), ForceMode.Impulse);
+        this.enabled = false;
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -103,14 +121,14 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    private void Die() {
-        GameController.OnEnemyDie();
-        float smooth = 5;
-        Rigidbody rb = GetComponent<Rigidbody>();
-        agent.enabled = false;
-        rb.constraints = RigidbodyConstraints.None;
-        rb.AddForce(new Vector3 (transform.position.x + 2, transform.position.y + 2, transform.position.z), ForceMode.Impulse);
-        this.enabled = false;
+    void OnTriggerEnter(Collider collision) {
+        if (collision.gameObject.tag == "Water") {
+            AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
+            waterSplashEffect = Instantiate(waterSplashEffect, transform.position, Quaternion.identity);
+            waterSplashEffect.transform.localScale = new Vector3(2, 2, 2);
+            Destroy(waterSplashEffect, 0.5f);
+            Die();
+        }
     }
 
     IEnumerator HitCooldown() {
