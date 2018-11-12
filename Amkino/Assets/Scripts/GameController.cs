@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour {
     public Canvas GameOverScreen;
     public Canvas HealthHUD;
 
+    private string TotalScore;
+
     private float enemyTimeSinceSpawn;
     private float itemTimeSinceSpawn;
     private float killScore;
@@ -106,8 +108,13 @@ public class GameController : MonoBehaviour {
 
     IEnumerator StartGameOver() {
         yield return new WaitForSeconds(1);
+        Text GameOverScore = GameObject.Find("GameOver/GameOverScore").GetComponent<Text>();
+        GameOverScore.text = "Your Score: " + TotalScore;
+        
+        
         GameOverScreen.enabled = true;
         HealthHUD.enabled = false;
+
     }
 
     void GameScore() { 
@@ -116,6 +123,7 @@ public class GameController : MonoBehaviour {
         {
             GameObject GameScore = GameObject.Find("HUD/GameScore");
             GameScore.GetComponent<Text>().text = Mathf.Round(Time.timeSinceLevelLoad + killScore).ToString();
+            TotalScore = GameScore.GetComponent<Text>().text;
         }
     }
 }
