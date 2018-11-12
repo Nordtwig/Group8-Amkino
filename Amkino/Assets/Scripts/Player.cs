@@ -199,7 +199,7 @@ public class Player : MonoBehaviour {
     void Die() {
         isDead = true;
         muzzleFlash.enabled = false;
-        float randomForce = UnityEngine.Random.Range(-0.5f, 0.5f);
+        float randomForce = UnityEngine.Random.Range(-0.1f, 0.1f);
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(new Vector3(transform.position.x + randomForce, transform.position.y, transform.position.z + randomForce), ForceMode.Impulse);
