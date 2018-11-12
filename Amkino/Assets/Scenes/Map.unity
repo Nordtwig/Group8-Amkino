@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.42122462, g: 0.4511084, b: 0.4715922, a: 1}
+  m_IndirectSpecularColor: {r: 0.42122465, g: 0.45110852, b: 0.47159225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -162,6 +162,7 @@ MonoBehaviour:
   CrosshairPrefab: {fileID: 1860313322}
   GameOverScreen: {fileID: 1120199097}
   HealthHUD: {fileID: 656810665}
+  oceanWaves: {fileID: 8300000, guid: 295bdbd9d1b1bf547ad05e9bffa21141, type: 3}
   enemySpawnRate: 3
   itemSpawnRate: 4
 --- !u!4 &449016
@@ -3003,6 +3004,16 @@ Prefab:
     - target: {fileID: 4744418454804566, guid: 1999067970ccc1449911db61c38584ec, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 82485840643497986, guid: 1999067970ccc1449911db61c38584ec,
+        type: 2}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82485840643497986, guid: 1999067970ccc1449911db61c38584ec,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.093
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1999067970ccc1449911db61c38584ec, type: 2}

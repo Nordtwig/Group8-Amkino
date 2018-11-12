@@ -199,10 +199,10 @@ public class Player : MonoBehaviour {
     void Die() {
         isDead = true;
         muzzleFlash.enabled = false;
-        float randomForce = UnityEngine.Random.Range(-0.1f, 0.1f);
+        float randomForce = UnityEngine.Random.Range(UnityEngine.Random.Range(-1, -0.1f), UnityEngine.Random.Range(0.1f, 1));
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
-        rb.AddForce(new Vector3(transform.position.x + randomForce, transform.position.y, transform.position.z + randomForce), ForceMode.Impulse);
+        rb.AddForce(new Vector3(randomForce, 0, randomForce), ForceMode.Impulse);
         this.enabled = false;
     }
 
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour {
             {
                 playerHitCount -= 1;
                 recentlyHealed = true;
-                AudioSource.PlayClipAtPoint(HeartPickupAudio, transform.position, 0.5f);
+                AudioSource.PlayClipAtPoint(HeartPickupAudio, transform.position, 0.2f);
                 Destroy(collision.gameObject);
             }
 
@@ -234,7 +234,6 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.tag == "Water") {
             AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
             waterSplashEffect = Instantiate(waterSplashEffect, transform.position, Quaternion.identity);
-            waterSplashEffect.transform.localScale = new Vector3(2, 2, 2);
             Destroy(waterSplashEffect, 0.5f);
             Die();
         }

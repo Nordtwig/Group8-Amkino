@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
     public Image CrosshairPrefab; // Crosshair-objektet är inte en sprite, den tar bara sin source från en.
     public Canvas GameOverScreen;
     public Canvas HealthHUD;
+    public AudioClip oceanWaves;
 
     private string TotalScore;
 
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour {
     public static OnEnemyDieHandler OnEnemyDie;
 
     void Start() {
+        AudioSource.PlayClipAtPoint(oceanWaves, transform.position, 0.5f);
         player = FindObjectOfType<Player>();
         GameOverScreen.enabled = false;
         Cursor.visible = false;

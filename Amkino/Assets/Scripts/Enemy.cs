@@ -98,13 +98,13 @@ public class Enemy : MonoBehaviour {
     }
 
     private void Die() {
-        float randomForce = UnityEngine.Random.Range(-1, 1);
+        float randomForce = UnityEngine.Random.Range(UnityEngine.Random.Range(-1, -0.1f), UnityEngine.Random.Range(0.1f, 1));
         muzzleFlash.enabled = false;
         GameController.OnEnemyDie();
         Rigidbody rb = GetComponent<Rigidbody>();
         agent.enabled = false;
         rb.constraints = RigidbodyConstraints.None;
-        rb.AddForce(new Vector3(transform.position.x + randomForce, transform.position.y, transform.position.z + randomForce), ForceMode.Impulse);
+        rb.AddForce(new Vector3(randomForce, 0, randomForce), ForceMode.Impulse);
         this.enabled = false;
     }
 
@@ -126,8 +126,7 @@ public class Enemy : MonoBehaviour {
         if (collision.gameObject.tag == "Water") {
             AudioSource.PlayClipAtPoint(WaterSplash, transform.position, 1f);
             waterSplashEffect = Instantiate(waterSplashEffect, transform.position, Quaternion.identity);
-            waterSplashEffect.transform.localScale = new Vector3(2, 2, 2);
-            Destroy(waterSplashEffect, 0.5f);
+            Destroy(waterSplashEffect, 1);
             Die();
         }
     }
