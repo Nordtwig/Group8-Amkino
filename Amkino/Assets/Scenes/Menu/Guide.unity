@@ -1406,6 +1406,8 @@ TextMesh:
 
     D - Move Right
 
+    R - Reload
+
     Left Click - Shoot
 
 
@@ -1469,8 +1471,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1909109015}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -0.284, y: 1.11, z: -0.143}
-  m_LocalScale: {x: 0.86718196, y: 1, z: 1}
+  m_LocalPosition: {x: -0.284, y: 1.11, z: -0.52}
+  m_LocalScale: {x: 0.86718196, y: 0.83262175, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
