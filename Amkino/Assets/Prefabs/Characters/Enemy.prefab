@@ -1796,7 +1796,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!108 &108178932564384812
 Light:
@@ -1854,6 +1854,7 @@ MonoBehaviour:
   rotateSpeed: 8
   detectionRange: 7
   fireRate: 0.2
+  health: 3
 --- !u!136 &136695952270377434
 CapsuleCollider:
   m_ObjectHideFlags: 1
