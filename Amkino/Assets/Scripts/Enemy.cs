@@ -98,13 +98,19 @@ public class Enemy : MonoBehaviour {
             health--;
             if (health <= 0) {
                 Die();
-                Destroy(gameObject);
+                Destroy(gameObject, 2f);
             }
         }
     }
 
     private void Die() {
         GameController.OnEnemyDie();
+        float smooth = 5;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        agent.enabled = false;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(new Vector3 (transform.position.x + 2, transform.position.y + 2, transform.position.z), ForceMode.Impulse);
+        this.enabled = false;
     }
 
     IEnumerator HitCooldown() {
