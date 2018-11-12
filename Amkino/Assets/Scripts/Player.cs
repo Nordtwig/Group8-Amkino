@@ -198,10 +198,11 @@ public class Player : MonoBehaviour {
 
     void Die() {
         isDead = true;
-        gameObject.GetComponent<Collider>().enabled = false;
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
-        transform.position = new Vector3(0, -5, 0);
-        enabled = false;
+        float randomForce = UnityEngine.Random.Range(-1, 1);
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(new Vector3(transform.position.x + randomForce, transform.position.y, transform.position.z + randomForce), ForceMode.Impulse);
+        this.enabled = false;
     }
 
     void OnTriggerEnter(Collider collision)
