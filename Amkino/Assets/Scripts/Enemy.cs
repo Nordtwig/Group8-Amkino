@@ -97,9 +97,14 @@ public class Enemy : MonoBehaviour {
             StartCoroutine("HitCooldown");
             health--;
             if (health <= 0) {
+                Die();
                 Destroy(gameObject);
             }
         }
+    }
+
+    private void Die() {
+        GameController.OnEnemyDie();
     }
 
     IEnumerator HitCooldown() {

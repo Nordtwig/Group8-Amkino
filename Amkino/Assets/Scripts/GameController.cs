@@ -14,21 +14,29 @@ public class GameController : MonoBehaviour {
 
     public GameObject EnemyPrefab;
     public GameObject ItemPrefab;
-    public Image CrosshairPrefab; // Crosshair-objeket är inte en sprite, den tar bara sin source från en.
+    public Image CrosshairPrefab; // Crosshair-objektet är inte en sprite, den tar bara sin source från en.
     public Canvas GameOverScreen;
     public Canvas HealthHUD;
 
     private float enemyTimeSinceSpawn;
     private float itemTimeSinceSpawn;
+    private float killScore;
 
     public float enemySpawnRate;
     public float itemSpawnRate;
+
+    public delegate void OnEnemyDieHandler();
+    public static OnEnemyDieHandler OnEnemyDie;
 
     void Start() {
         player = FindObjectOfType<Player>();
         GameOverScreen.enabled = false;
         Cursor.visible = false;
-        
+        OnEnemyDie += AddScore;
+    }
+
+    void AddScore() {
+        killScore += 75;
     }
 
     void Update() {
@@ -72,6 +80,7 @@ public class GameController : MonoBehaviour {
 
             for (int i = 0; i < enemySpawnPoints.Length; i++) {
                 if (randomIndex == i) {
+
                     Instantiate(EnemyPrefab, enemySpawnPoints[i].position, Quaternion.identity);
                 }
             }
@@ -105,9 +114,8 @@ public class GameController : MonoBehaviour {
 
         if (!player.IsDead)
         {
-
             GameObject GameScore = GameObject.Find("HUD/GameScore");
-            GameScore.GetComponent<Text>().text = Time.timeSinceLevelLoad.ToString("0"); //kanske multiplicera detta på något sätt? 
+            GameScore.GetComponent<Text>().text = Mathf.Round(Time.timeSinceLevelLoad + killScore).ToString();
         }
     }
 }
