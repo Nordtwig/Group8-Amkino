@@ -99,6 +99,7 @@ public class Enemy : MonoBehaviour {
 
     private void Die() {
         float randomForce = UnityEngine.Random.Range(-1, 1);
+        muzzleFlash.enabled = false;
         GameController.OnEnemyDie();
         Rigidbody rb = GetComponent<Rigidbody>();
         agent.enabled = false;
